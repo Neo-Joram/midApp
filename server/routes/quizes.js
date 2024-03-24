@@ -6,8 +6,8 @@ const pool = require("../connection");
 
 // Route to add a quiz
 router.post("/add", (req, res) => {
-  console.log(req.body);
-  const { quizName } = req.body;
+  console.log(req);
+  const { quizName } = req;
   const dateTime = new Date().toLocaleDateString();
 
   pool.query(
