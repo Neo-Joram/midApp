@@ -8,6 +8,7 @@ const pool = require("../connection");
 router.post("/add", (req, res) => {
   const { quizName } = req.body;
   const dateTime = new Date().toLocaleDateString();
+  console.log(req.body);
 
   pool.query(
     "INSERT INTO quizes(quizName, dateTime) VALUES ($1, $2) RETURNING id",
