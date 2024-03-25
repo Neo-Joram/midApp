@@ -15,7 +15,7 @@ router.get("/retrieve", (req, res) => {
 });
 
 // Route to delete an answer
-router.delete("/delete", (req, res) => {
+router.post("/delete", (req, res) => {
   const { id } = req.body;
 
   pool.query("DELETE FROM answers WHERE id = $1", [id], (error, result) => {
@@ -30,7 +30,7 @@ router.delete("/delete", (req, res) => {
 });
 
 // Route to update an answer
-router.put("/update", (req, res) => {
+router.post("/update", (req, res) => {
   const { answer, isCorrect, id } = req.body;
 
   pool.query(

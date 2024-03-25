@@ -72,6 +72,11 @@ app.get("/", (req, res) => {
   res.send({ msg: "Welcome to this server" });
 });
 
+app.get("/clear", (req, res) => {
+  createTables();
+  res.send({ msg: "Cleared" });
+});
+
 app.listen(4001, () => {
   console.log("Server is running on port 4001");
 });
