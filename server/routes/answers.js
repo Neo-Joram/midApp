@@ -6,7 +6,6 @@ const pool = require("../connection");
 
 // Route to retrieve all answers
 router.get("/retrieve", (req, res) => {
-  console.log("Called");
   pool.query("SELECT * FROM answers order by id asc", (error, result) => {
     if (error) {
       return res.status(500).json({ error: error.message });
@@ -51,11 +50,11 @@ router.put("/update", (req, res) => {
 
 // Route to add an answer
 router.post("/add", (req, res) => {
-  const { questionId, answer, isCorrect } = req.body;
+  const { id, questionId, answer, isCorrect } = req.body;
 
   pool.query(
-    "INSERT INTO answers(questionId, answer, isCorrect) VALUES ($1, $2, $3)",
-    [questionId, answer, isCorrect],
+    "INSERT INTO answers(id, questionId, answer, isCorrect) VALUES ($1, $2, $3, $4)",
+    [id, questionId, answer, isCorrect],
     (error, result) => {
       if (error) {
         return res.status(500).json({ error: error.message });
