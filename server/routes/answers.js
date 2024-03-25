@@ -51,11 +51,11 @@ router.put("/update", (req, res) => {
 
 // Route to add an answer
 router.post("/add", (req, res) => {
-  const { selectedValue, answer, isCorrect } = req.body;
+  const { questionId, answer, isCorrect } = req.body;
 
   pool.query(
     "INSERT INTO answers(questionId, answer, isCorrect) VALUES ($1, $2, $3)",
-    [selectedValue, answer, isCorrect],
+    [questionId, answer, isCorrect],
     (error, result) => {
       if (error) {
         return res.status(500).json({ error: error.message });

@@ -50,8 +50,8 @@ const viewTablesQuery =
 async function createTables() {
   try {
     const client = await pool.connect();
-    // await client.query(truncateQuery);
-    // await client.query(createTablesQuery);
+    await client.query(truncateQuery);
+    await client.query(createTablesQuery);
     const result = await client.query(viewTablesQuery);
     result.rows.forEach((row) => {
       console.log(row.table_name);
