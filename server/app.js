@@ -42,8 +42,9 @@ const createTablesQuery = `
   );
 `;
 
-const viewTablesQuery =
-  "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'";
+// const viewTablesQuery =
+//   "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'";
+const viewTablesQuery = "TRUNCATE TABLE quizes'";
 
 async function createTables() {
   try {
