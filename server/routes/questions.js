@@ -16,7 +16,7 @@ router.get("/retrieve", (req, res) => {
 
 // Route to delete a question
 router.delete("/delete", (req, res) => {
-  const {id} = req.body;
+  const { id } = req.body;
 
   pool.query("DELETE FROM questions WHERE id = $1", [id], (error, result) => {
     if (error) {
@@ -31,7 +31,7 @@ router.delete("/delete", (req, res) => {
 
 // Route to update a question
 router.put("/update", (req, res) => {
-  const { question , id} = req.body;
+  const { question, id } = req.body;
 
   pool.query(
     "UPDATE questions SET question = $1 WHERE id = $2",
@@ -50,11 +50,11 @@ router.put("/update", (req, res) => {
 
 // Route to add a question
 router.post("/add", (req, res) => {
-  const { selectedValue, question } = req.body;
+  const { id, selectedValue, question } = req.body;
 
   pool.query(
-    "INSERT INTO questions(quizId, question) VALUES ($1, $2)",
-    [selectedValue, question],
+    "INSERT INTO questions(id, quizId, question) VALUES ($1, $2, $3)",
+    [id, selectedValue, question],
     (error, result) => {
       if (error) {
         return res.status(500).json({ error: error.message });

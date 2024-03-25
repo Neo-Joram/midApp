@@ -6,11 +6,11 @@ const pool = require("../connection");
 
 // Route to add a quiz
 router.post("/add", (req, res) => {
-  const { quizName, dateTime } = req.body;
+  const { id, quizName, dateTime } = req.body;
 
   pool.query(
-    "INSERT INTO quizes(quizName, dateTime) VALUES ($1, $2) RETURNING id",
-    [quizName, dateTime],
+    "INSERT INTO quizes(id, quizName, dateTime) VALUES ($1, $2, $3) RETURNING id",
+    [id, quizName, dateTime],
     (error, result) => {
       if (error) {
         return res.status(500).json({ error: error.message });

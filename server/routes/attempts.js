@@ -9,8 +9,8 @@ router.post("/add", (req, res) => {
   const { userId, quizId, marks } = req.body;
 
   pool.query(
-    "INSERT INTO attempts(userId, quizId, marks) VALUES ($1, $2, $3)",
-    [userId, quizId, marks],
+    "INSERT INTO attempts(id, userId, quizId, marks) VALUES ($1, $2, $3, $4)",
+    [id, userId, quizId, marks],
     (error, result) => {
       if (error) {
         return res.status(500).json({ error: error.message });
