@@ -42,13 +42,14 @@ const createTablesQuery = `
   );
 `;
 
-// const viewTablesQuery =
-//   "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'";
-const viewTablesQuery = "TRUNCATE TABLE quizes'";
+const viewTablesQuery =
+  "SELECT table_name FROM information_schema.tables WHERE table_schema='public' AND table_type='BASE TABLE'";
+const truncateQuery = "TRUNCATE TABLE quizes'";
 
 async function createTables() {
   try {
     const client = await pool.connect();
+    await client.query(truncateQuery);
     const result = await client.query(viewTablesQuery);
     result.rows.forEach((row) => {
       console.log(row.table_name);
