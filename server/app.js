@@ -18,7 +18,7 @@ const createTablesQuery = `
   CREATE TABLE IF NOT EXISTS quizes (
     id SERIAL PRIMARY KEY,
     quizName VARCHAR,
-    dateTime DATE
+    dateTime VARCHAR
   );
 
   CREATE TABLE IF NOT EXISTS questions (
