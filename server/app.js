@@ -61,7 +61,6 @@ async function createTables() {
     console.error("Error creating tables:", err);
   }
 }
-createTables();
 
 app.use("/quiz", require("./routes/quizes"));
 app.use("/questions", require("./routes/questions"));
@@ -72,7 +71,7 @@ app.get("/", (req, res) => {
   res.send({ msg: "Welcome to this server" });
 });
 
-app.get("/clear", (req, res) => {
+app.get("/action", (req, res) => {
   createTables();
   res.send({ msg: "Cleared" });
 });
