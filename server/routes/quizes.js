@@ -41,9 +41,9 @@ router.post("/update", (req, res) => {
 
 // Route to delete a quiz
 router.post("/delete", (req, res) => {
-  const { id } = req;
+  const { id } = req.body;
 
-  pool.query("DELETE FROM quizes WHERE id = ?", [id], (error, result) => {
+  pool.query("DELETE FROM quizes WHERE id = $1", [id], (error, result) => {
     if (error) {
       return res.status(500).json({ error: error.message });
     }

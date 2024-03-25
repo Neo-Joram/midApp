@@ -21,8 +21,8 @@ router.post("/add", (req, res) => {
 });
 
 // Route to retrieve attempts by user ID
-router.get("/retrieve/:userId", (req, res) => {
-  const userId = req.params.userId;
+router.get("/retrieve", (req, res) => {
+  const { userId } = req.body;
 
   pool.query(
     "SELECT * FROM attempts WHERE userId = $1 ORDER BY id DESC",
