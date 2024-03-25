@@ -7,7 +7,7 @@ const pool = require("../connection");
 // Route to retrieve all answers
 router.get("/retrieve", (req, res) => {
   console.log("Called");
-  pool.query("SELECT * FROM answers", (error, result) => {
+  pool.query("SELECT * FROM answers order by id asc", (error, result) => {
     if (error) {
       return res.status(500).json({ error: error.message });
     }

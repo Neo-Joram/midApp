@@ -56,7 +56,7 @@ router.post("/delete", (req, res) => {
 
 // Route to retrieve all quizzes
 router.get("/retrieve", (req, res) => {
-  pool.query("SELECT * FROM quizes", (error, result) => {
+  pool.query("SELECT * FROM quizes order by id asc", (error, result) => {
     if (error) {
       return res.status(500).json({ error: error.message });
     }
